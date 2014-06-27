@@ -202,8 +202,6 @@ def fetch_local_list(args, is_src = False, recursive = None):
 
 
     def _get_filelist_local(loc_list, local_uri, cache):
-        info(u"Compiling list of local files...")
-
         if deunicodise(local_uri.basename()) == "-":
             try:
                 uid = os.geteuid()
@@ -302,6 +300,7 @@ def fetch_local_list(args, is_src = False, recursive = None):
             raise ParameterError("Use --recursive to upload a directory: %s" % arg)
         local_uris.append(uri)
 
+    info(u"Compiling list of local files...")
     for uri in local_uris:
         list_for_uri, single_file = _get_filelist_local(local_list, uri, cache)
 
